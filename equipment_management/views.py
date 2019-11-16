@@ -16,7 +16,7 @@ def add_band(request):
 
   if request.method == 'POST' and form.is_valid():
     form.save()
-    return redirect('index')
+    return redirect('equipment:index')
 
   context = {
     'form' : BandCreateForm()
