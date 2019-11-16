@@ -11,14 +11,21 @@ def index(request):
   return render(request, 'equipment_management/index.html', context)
 
 def add_band(request):
-
   form = BandCreateForm(request.POST or None)
-
   if request.method == 'POST' and form.is_valid():
     form.save()
     return redirect('equipment:index')
-
   context = {
     'form' : BandCreateForm()
+  }
+  return render(request, 'equipment_management/band_form.html', context)
+
+def add_schedule(request):
+  form = ScheduleCreateForm(request.POST or None)
+  if request.method == 'POST' and form.is_valid():
+    form.save()
+    return redirect('equipment:index')
+  context = {
+    'form' : ScheduleCreateForm()
   }
   return render(request, 'equipment_management/band_form.html', context)

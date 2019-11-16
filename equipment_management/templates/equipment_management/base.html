@@ -14,7 +14,7 @@
         <nav class="nav">
             <a class="nav-link" href="{% url 'equipment:index' %}">予約スケジュール</a>
             <a class="nav-link" href="{% url 'equipment:add_band' %}">バンドの追加</a>
-            <a class="nav-link" href="#!">予約の追加</a>
+            <a class="nav-link" href="{% url 'equipment:add_schedule' %}">予約の追加</a>
           </nav>
       {% block content %}
       {% endblock %}

@@ -2,11 +2,12 @@
 
 {% block content %}
 
-
-<form action="" method="POST">
-{{ form.as_p }}
-<button type="submit">登録</button>
-{% csrf_token %}
-</form>
+<div class="container">
+  <form action="" method="POST">
+  {{ form.as_p }}
+  <button type="submit">登録</button>
+  {% csrf_token %}
+  </form>
+</div>
 
 {% endblock %}

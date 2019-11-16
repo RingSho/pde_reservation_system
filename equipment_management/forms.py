@@ -9,7 +9,9 @@ class BandCreateForm(forms.ModelForm):
 
 
 class ScheduleCreateForm(forms.ModelForm):
-
+  start_at = forms.SplitDateTimeField()
+  end_at = forms.SplitDateTimeField()
+  
   class Meta:
     model = Schedule
     fields = '__all__'
