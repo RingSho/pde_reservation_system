@@ -8,6 +8,7 @@
   <thead>
     <tr>
       <th>Bands</th>
+      <th>Date</th>
       <th>Start at</th>
       <th>End at</th>
       <th>備考</th>
@@ -19,6 +20,7 @@
     {% for schedule in schedules %}
     <tr>
       <td>{{ schedule.band_id }}</td>
+      <td>{{ schedule.active_date }}</td>
       <td>{{ schedule.start_at }}</td>
       <td>{{ schedule.end_at }}</a></td>
       <td>{{ schedule.text }}</td>
