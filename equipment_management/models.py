@@ -1,9 +1,12 @@
 from django.db import models
 from django.utils import timezone
 
+def two_hours_hence():
+    return timezone.now() + timezone.timedelta(hours=2)
+
 class Band(models.Model):
   band_name = models.CharField(max_length=255, verbose_name='バンド名')
-  responsible_person_name = models.CharField(max_length=255, verbose_name='責任者名')
+  responsible_person_name = models.CharField(max_length=255, verbose_name='バンドマスター')
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
 
@@ -13,8 +16,9 @@ class Band(models.Model):
 class Schedule(models.Model):
   band_id = models.ForeignKey(Band, on_delete=models.CASCADE)
   pa_name = models.CharField(max_length=255, verbose_name='PA担当者名')
-  start_at = models.DateTimeField(default=timezone.now)
-  end_at = models.DateTimeField(default=timezone.now)
+  active_date = models.DateField(default=timezone.now)
+  start_at = models.TimeField(default=timezone.now)
+  end_at = models.TimeField(default=two_hours_hence)
   text = models.TextField(blank=True)
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)

@@ -11,3 +11,25 @@
 </div>
 
 {% endblock %}
+
+{% block extrajs %}
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/timedropper/1.0/timedropper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/timedropper/1.0/timedropper.min.js"></script>
+
+    <script>
+      $(function () {
+        // timedropper
+        $("#id_start_at").timeDropper({
+            format: "H:mm",
+            setCurrentTime: false,
+        });
+
+        $("#id_end_at").timeDropper({
+            format: "H:mm",
+            setCurrentTime: false,
+        });
+
+      });
+    </script>
+{% endblock %}
