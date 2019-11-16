@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'graphene_django',
 ]
 
 MIDDLEWARE = [
@@ -51,6 +52,10 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'pde_reservation_system.urls'
+
+GRAPHENE = {
+    'SCHEMA': 'django_root.schema.schema'
+}
 
 TEMPLATES = [
     {
