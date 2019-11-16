@@ -1,0 +1,27 @@
+{% extends 'equipment_management/base.html' %}
+
+{% block content %}
+<form action="" method="POST">
+    <table class="table">
+      <tr>
+        <th>バンド名</th>
+        <td>{{ schedule.band_id }}</td>
+      </tr>
+      <tr>
+        <th>Start at</th>
+        <td>{{ schedule.start_at }}</td>
+      </tr>
+      <tr>
+        <th>End at</th>
+        <td>{{ schedule.end_at }}</td>
+      </tr>
+      <tr>
+        <th>備考</th>
+        <td>{{ schedule.text }}</td>
+      </tr>
+    </table>
+  <p>こちらのデータを削除します</p>
+  <button type="submit" class="btn btn-primary">削除</button>
+  {% csrf_token %}
+</form>
+{% endblock %}
