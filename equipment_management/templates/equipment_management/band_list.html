@@ -1,0 +1,24 @@
+{% extends 'equipment_management/base.html' %}
+
+{% block content %}
+
+<h1>PDE Band List</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Bands</th>
+      <th>責任者</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for band in bands %}
+    <tr>
+      <td>{{ band.band_name }}</td>
+      <td>{{ band.responsible_person_name }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

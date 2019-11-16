@@ -29,3 +29,9 @@ def add_schedule(request):
     'form' : ScheduleCreateForm()
   }
   return render(request, 'equipment_management/band_form.html', context)
+
+def show_band_list(request):
+  context ={
+      'bands' : Band.objects.all(),
+  }
+  return render(request, 'equipment_management/band_list.html', context)
