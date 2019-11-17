@@ -20,10 +20,10 @@ def add_schedule(request):
   form = ScheduleCreateForm(request.POST or None)
   if request.method == 'POST' and form.is_valid():
     form.save()
-    return redirect('equipment:index')
+    return redirect('equipment:month')
   context = {
     'form' : ScheduleCreateForm(),
-    'title' : '予約登録',
+    'title' : '機材予約',
   }
   return render(request, 'equipment_management/band_form.html', context)
 
@@ -41,7 +41,7 @@ def update_schedule(request, pk):
   form = ScheduleCreateForm(request.POST or None, instance=schedule)
   if request.method == 'POST' and form.is_valid():
     form.save()
-    return redirect('equipment:index')
+    return redirect('equipment:month')
 
   context = {
       'form': form,
@@ -53,7 +53,7 @@ def delete_schedule(request, pk):
     schedule = get_object_or_404(Schedule, pk=pk)
     if request.method == 'POST':
         schedule.delete()
-        return redirect('equipment:index')
+        return redirect('equipment:month')
 
     context = {
         'schedule': schedule,

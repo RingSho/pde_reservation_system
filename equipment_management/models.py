@@ -7,10 +7,10 @@ def two_hours_hence():
 
 class Band(models.Model):
   band_name = models.CharField(max_length=255,
-                               verbose_name='バンド名',
+                               verbose_name="Band's Name",
                                )
   responsible_person_name = models.CharField(max_length=255,
-                                             verbose_name='バンドマスター')
+                                             verbose_name="Band Master's Name")
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
 

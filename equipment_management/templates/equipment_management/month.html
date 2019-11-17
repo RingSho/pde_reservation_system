@@ -1,11 +1,10 @@
 {% extends 'equipment_management/base.html' %}
 
-
 {% block content %}
 
 <br>
-<br>
 <h2><i class="fas fa-calendar-week"></i> 予約スケジュール</h2>
+<br>
 
 <a href="{% url 'equipment:month' month_previous.year month_previous.month %}">前月</a>
 {{ month_current | date:"Y年m月" }}
@@ -48,6 +47,7 @@
 <br>
 
 <h2><i class="fas fa-microphone"></i> 予約一覧</h2>
+<br>
 <table class="table">
   <thead>
     <tr>
@@ -68,9 +68,16 @@
         <td>{{ schedule.start_at }}</td>
         <td>{{ schedule.end_at }}</a></td>
         <td>{{ schedule.text }}</td>
-        <td><a href="{% url 'equipment:update_schedule' schedule.pk %}">予約変更</a></td>
-        <td><a href="{% url 'equipment:delete_schedule' schedule.pk %}">予約取消</a></td>
-      </tr>
+        <td>
+          <a href="{% url 'equipment:update_schedule' schedule.pk %}">
+            <button type="button" class="btn btn-success">予約変更</button>
+          </a>
+        </td>
+        <td>
+          <a href="{% url 'equipment:delete_schedule' schedule.pk %}">
+            <button type="button" class="btn btn-danger">予約取消</button>
+          </a>
+        </td>
     {% endfor %}
   </tbody>
 </table>
