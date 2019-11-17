@@ -23,7 +23,7 @@ class Schedule(models.Model):
   active_date = models.DateField(default=timezone.now)
   start_at = models.TimeField(default=timezone.now)
   end_at = models.TimeField(default=two_hours_hence)
-  text = models.TextField(blank=True)
+  text = models.TextField(blank=True, verbose_name='備考欄')
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
 

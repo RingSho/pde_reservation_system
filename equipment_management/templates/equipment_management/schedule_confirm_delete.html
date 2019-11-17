@@ -1,6 +1,10 @@
 {% extends 'equipment_management/base.html' %}
 
 {% block content %}
+<br>
+<h2><i class="fas fa-trash-alt"></i> 予約取消</h2>
+<br>
+
 <form action="" method="POST">
     <table class="table">
       <tr>
@@ -21,7 +25,7 @@
       </tr>
     </table>
   <p>この予約を取り消します</p>
-  <button type="submit" class="btn btn-primary">削除</button>
+  <button type="submit" class="btn btn-danger">削除</button>
   {% csrf_token %}
 </form>
 {% endblock %}

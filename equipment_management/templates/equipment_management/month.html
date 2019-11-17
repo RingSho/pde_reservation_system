@@ -29,9 +29,9 @@
           {% endif %}
 
           {% if month_current.month != day.month %}
-            {{ day | date:"m/d" }}
+            <a href="#">{{ day | date:"m/d" }}</a>
           {% else %}
-            {{ day.day }}
+          <a href="#">{{ day.day }}</a>
           {% endif %}
 
             </td>
