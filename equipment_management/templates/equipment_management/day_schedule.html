@@ -1,0 +1,43 @@
+{% extends 'equipment_management/base.html' %}
+
+{% block content %}
+<br>
+<h2><i class="fas fa-microphone"></i> {{ target_date }}の予約一覧</h2>
+<br>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Bands</th>
+      <th>Date</th>
+      <th>Start at</th>
+      <th>End at</th>
+      <th>備考</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for schedule in schedules %}
+    <tr>
+      <td>{{ schedule.band_id }}</td>
+      <td>{{ schedule.active_date }}</td>
+      <td>{{ schedule.start_at }}</td>
+      <td>{{ schedule.end_at }}</a></td>
+      <td>{{ schedule.text }}</td>
+      <td>
+        <a href="{% url 'equipment:update_schedule' schedule.pk %}">
+          <button type="button" class="btn btn-success">予約変更</button>
+        </a>
+      </td>
+      <td>
+        <a href="{% url 'equipment:delete_schedule' schedule.pk %}">
+          <button type="button" class="btn btn-danger">予約取消</button>
+        </a>
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

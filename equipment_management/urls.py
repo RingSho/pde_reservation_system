@@ -14,4 +14,5 @@ urlpatterns = [
   path('delete_schedule/<int:pk>/', views.delete_schedule, name='delete_schedule'),
   path('delete_band/<int:pk>/', views.delete_band, name='delete_band'),
   path('schedule_by_band/<int:pk>', views.schedule_by_band, name='schedule_by_band'),
+  path('day_schedule/<int:year>/<int:month>/<int:day>', views.day_schedule, name='day_schedule'),
 ]

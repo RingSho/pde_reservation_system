@@ -2,12 +2,15 @@
 
 {% block content %}
 
+
 <br>
 <h2><i class="fas fa-calendar-week"></i> 予約スケジュール</h2>
 <br>
 
+
 <a href="{% url 'equipment:month' month_previous.year month_previous.month %}">前月</a>
 {{ month_current | date:"Y年m月" }}
+
 <a href="{% url 'equipment:month' month_next.year month_next.month %}">次月</a>
 
 <table class="table">
@@ -29,9 +32,9 @@
           {% endif %}
 
           {% if month_current.month != day.month %}
-            <a href="#">{{ day | date:"m/d" }}</a>
+          <a href="{% url 'equipment:day_schedule' day.year day.month day.day %}">{{ day | date:"m/d" }}</a>
           {% else %}
-          <a href="#">{{ day.day }}</a>
+          <a href="{% url 'equipment:day_schedule' day.year day.month day.day %}">{{ day.day }}</a>
           {% endif %}
 
             </td>
@@ -46,7 +49,7 @@
 <br>
 <br>
 
-<h2><i class="fas fa-microphone"></i> 予約一覧</h2>
+<h2><i class="fas fa-microphone"></i> 本日({{ today }})の予約一覧</h2>
 <br>
 <table class="table">
   <thead>
