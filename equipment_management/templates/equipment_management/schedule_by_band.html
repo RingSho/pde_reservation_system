@@ -25,8 +25,16 @@
       <td>{{ schedule.start_at }}</td>
       <td>{{ schedule.end_at }}</a></td>
       <td>{{ schedule.text }}</td>
-      <td><a href="{% url 'equipment:update_schedule' schedule.pk %}">予約変更</a></td>
-      <td><a href="{% url 'equipment:delete_schedule' schedule.pk %}">予約取消</a></td>
+      <td>
+        <a href="{% url 'equipment:update_schedule' schedule.pk %}">
+          <button type="button" class="btn btn-success">予約変更</button>
+        </a>
+      </td>
+      <td>
+        <a href="{% url 'equipment:delete_schedule' schedule.pk %}">
+          <button type="button" class="btn btn-danger">予約取消</button>
+        </a>
+      </td>
     </tr>
   {% endfor %}
   </tbody>

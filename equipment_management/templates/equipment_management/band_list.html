@@ -18,7 +18,11 @@
     <tr>
       <td><a href="{% url 'equipment:schedule_by_band' band.pk %}">{{ band.band_name }}</a></td>
       <td>{{ band.responsible_person_name }}</td>
-      <td><a href="{% url 'equipment:delete_band' band.pk %}">削除</a></td>
+      <td>
+        <a href="{% url 'equipment:delete_band' band.pk %}">
+            <button type="button" class="btn btn-danger">削除</button>
+        </a>
+      </td>
     </tr>
   {% endfor %}
   </tbody>
