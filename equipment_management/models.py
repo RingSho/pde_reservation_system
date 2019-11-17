@@ -1,10 +1,11 @@
 from django.db import models
 from django.utils import timezone
 
+
 def two_hours_hence():
     return timezone.now() + timezone.timedelta(hours=2)
 
-class Band(models.Model):
+class Band(models.Model): 
   band_name = models.CharField(max_length=255,
                                verbose_name="Band's Name",
                                unique=True,
@@ -16,6 +17,7 @@ class Band(models.Model):
 
   def __str__(self):
       return self.band_name
+
 
 class Schedule(models.Model):
   band_id = models.ForeignKey(Band, on_delete=models.CASCADE)

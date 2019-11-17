@@ -8,7 +8,6 @@
 
 <a href="{% url 'equipment:month' month_previous.year month_previous.month %}">前月</a>
 {{ month_current | date:"Y年m月" }}
-
 <a href="{% url 'equipment:month' month_next.year month_next.month %}">次月</a>
 
 <table class="table">
@@ -64,7 +63,7 @@
   <tbody>
     {% for schedule in schedules %}
       <tr>
-        <td>{{ schedule.band_id }}</td>
+        <td><a href="{% url 'equipment:schedule_by_band' schedule.band_id.id %}">{{ schedule.band_id }}</a></td>
         <td>{{ schedule.active_date }}</td>
         <td>{{ schedule.start_at }}</td>
         <td>{{ schedule.end_at }}</a></td>
