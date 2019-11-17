@@ -1,0 +1,19 @@
+{% extends 'equipment_management/base.html' %}
+
+{% block content %}
+<form action="" method="POST">
+    <table class="table">
+      <tr>
+        <th>バンド名</th>
+        <td>{{ band.band_name }}</td>
+      </tr>
+        <th>バンドマスター</th>
+        <td>{{ band.responsible_person_name }}</td>
+      </tr>
+    </table>
+  <p>このバンドを削除します</p>
+  <p>このバンドの予約も全て削除されますが、よろしいですか？</p>
+  <button type="submit" class="btn btn-primary">削除</button>
+  {% csrf_token %}
+</form>
+{% endblock %}

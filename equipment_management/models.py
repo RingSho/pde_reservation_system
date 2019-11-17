@@ -1,12 +1,16 @@
 from django.db import models
 from django.utils import timezone
 
+
 def two_hours_hence():
     return timezone.now() + timezone.timedelta(hours=2)
 
 class Band(models.Model):
-  band_name = models.CharField(max_length=255, verbose_name='バンド名')
-  responsible_person_name = models.CharField(max_length=255, verbose_name='バンドマスター')
+  band_name = models.CharField(max_length=255,
+                               verbose_name='バンド名',
+                               )
+  responsible_person_name = models.CharField(max_length=255,
+                                             verbose_name='バンドマスター')
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
 

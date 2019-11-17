@@ -7,15 +7,17 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Bands</th>
-      <th>バンドマスター</th>
+      <th>Band Names</th>
+      <th>Band Masters</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     {% for band in bands %}
     <tr>
-      <td>{{ band.band_name }}</td>
+      <td><a href="{% url 'equipment:schedule_by_band' band.pk %}">{{ band.band_name }}</a></td>
       <td>{{ band.responsible_person_name }}</td>
+      <td><a href="{% url 'equipment:delete_band' band.pk %}">削除</a></td>
     </tr>
   {% endfor %}
   </tbody>
