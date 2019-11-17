@@ -16,7 +16,7 @@ def add_band(request):
     'title' : 'バンド登録',
   }
   if request.method == 'POST' and not form.is_valid():
-    context['error_message'] = "既に登録されたバンド名が入力されています。"
+    context['error_message'] = "※ 既に登録されたバンド名が入力されています。"
   return render(request, 'equipment_management/band_form.html', context)
 
 def add_schedule(request):
