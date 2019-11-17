@@ -15,6 +15,8 @@ def add_band(request):
     'form' : BandCreateForm(),
     'title' : 'バンド登録',
   }
+  if request.method == 'POST' and not form.is_valid():
+    context['error_message'] = "既に登録されたバンド名が入力されています。"
   return render(request, 'equipment_management/band_form.html', context)
 
 def add_schedule(request):
@@ -77,7 +79,7 @@ def schedule_by_band(request, pk):
 
   context ={
       'band_name' : band_name,
-      'schedules' : Schedule.objects.filter(band_id=band_name),
+      'schedules' : Schedule.objects.filter(band_id=band_name).order_by('-active_date'),
   }
   return render(request, 'equipment_management/schedule_by_band.html', context)
 

@@ -1,13 +1,13 @@
 from django.db import models
 from django.utils import timezone
 
-
 def two_hours_hence():
     return timezone.now() + timezone.timedelta(hours=2)
 
 class Band(models.Model):
   band_name = models.CharField(max_length=255,
                                verbose_name="Band's Name",
+                               unique=True,
                                )
   responsible_person_name = models.CharField(max_length=255,
                                              verbose_name="Band Master's Name")
