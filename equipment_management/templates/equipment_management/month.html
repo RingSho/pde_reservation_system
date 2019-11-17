@@ -1,0 +1,78 @@
+{% extends 'equipment_management/base.html' %}
+
+
+{% block content %}
+
+<br>
+<br>
+<h2>予約スケジュール</h2>
+
+<a href="{% url 'equipment:month' month_previous.year month_previous.month %}">前月</a>
+{{ month_current | date:"Y年m月" }}
+<a href="{% url 'equipment:month' month_next.year month_next.month %}">次月</a>
+
+<table class="table">
+  <thead>
+    <tr>
+      {% for w in week_names %}
+        <th>{{ w }}</th>
+      {% endfor %}
+    </tr>
+  </thead>
+  <tbody>
+    {% for week in month_days %}
+      <tr>
+        {% for day in week %}
+          {% if now == day %}
+            <td class="table-success">
+          {% else %}
+            <td>
+          {% endif %}
+
+          {% if month_current.month != day.month %}
+            {{ day | date:"m/d" }}
+          {% else %}
+            {{ day.day }}
+          {% endif %}
+
+            </td>
+        {% endfor %}
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<br>
+<br>
+<br>
+<br>
+
+<h2>予約一覧</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Bands</th>
+      <th>Date</th>
+      <th>Start at</th>
+      <th>End at</th>
+      <th>備考</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for schedule in schedules %}
+      <tr>
+        <td>{{ schedule.band_id }}</td>
+        <td>{{ schedule.active_date }}</td>
+        <td>{{ schedule.start_at }}</td>
+        <td>{{ schedule.end_at }}</a></td>
+        <td>{{ schedule.text }}</td>
+        <td><a href="{% url 'equipment:update_schedule' schedule.pk %}">予約変更</a></td>
+        <td><a href="{% url 'equipment:delete_schedule' schedule.pk %}">予約取消</a></td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

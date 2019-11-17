@@ -1,20 +1,15 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Band, Schedule
 from .forms import BandCreateForm, ScheduleCreateForm
+from . import mixins
+from django.views import generic
 
-
-def index(request):
-  context ={
-      'bands' : Band.objects.all(),
-      'schedules' : Schedule.objects.all(),
-  }
-  return render(request, 'equipment_management/index.html', context)
 
 def add_band(request):
   form = BandCreateForm(request.POST or None)
   if request.method == 'POST' and form.is_valid():
     form.save()
-    return redirect('equipment:index')
+    return redirect('equipment:show_band_list')
   context = {
     'form' : BandCreateForm(),
     'title' : 'バンド登録',
@@ -84,3 +79,15 @@ def schedule_by_band(request, pk):
       'schedules' : Schedule.objects.filter(band_id=band_name),
   }
   return render(request, 'equipment_management/schedule_by_band.html', context)
+
+class MonthCalendar(mixins.MonthCalendarMixin, generic.TemplateView):
+    """月間カレンダーを表示するビュー"""
+    template_name = 'equipment_management/month.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        calendar_context = self.get_month_calendar()
+        context.update(calendar_context)
+        context['bands'] = Band.objects.all()
+        context['schedules'] = Schedule.objects.all().order_by('-active_date')
+        return context

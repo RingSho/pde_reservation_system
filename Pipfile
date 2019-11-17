@@ -9,6 +9,7 @@ verify_ssl = true
 django = "*"
 graphene-django = "*"
 django-bootstrap-datepicker-plus = "*"
+spyder = "*"
 
 [requires]
 python_version = "3.7"
