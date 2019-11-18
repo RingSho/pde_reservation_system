@@ -5,3 +5,4 @@ pde.code-workspace
 *.pyc
 pycache/
 db.sqlite3
+local_settings.py
