@@ -17,10 +17,6 @@ django-bootstrap-datepicker-plus==3.0.5
 django-user-sessions==1.6.0
 docutils==0.15.2
 entrypoints==0.3
-graphene==2.1.8
-graphene-django==2.6.0
-graphql-core==2.2.1
-graphql-relay==2.0.0
 gunicorn==20.0.0
 idna==2.8
 imagesize==1.1.0
