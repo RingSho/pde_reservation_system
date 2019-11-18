@@ -8,7 +8,7 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Date</th>
+      <th class="date">Date</th>
       <th>Start at</th>
       <th>End at</th>
       <th>PA担当者</th>
@@ -20,19 +20,19 @@
   <tbody>
     {% for schedule in schedules %}
     <tr>
-      <td>{{ schedule.active_date }}</td>
+      <td class="date">{{ schedule.active_date }}</td>
       <td>{{ schedule.start_at }}</td>
       <td>{{ schedule.end_at }}</a></td>
       <td>{{ schedule.pa_name }}</td>
       <td>{{ schedule.text }}</td>
       <td>
         <a href="{% url 'equipment:update_schedule' schedule.pk %}">
-          <button type="button" class="btn btn-success">予約変更</button>
+          <button type="button" class="btn btn-success btn-xs" style="font-size: 10px;">予約変更</button>
         </a>
       </td>
       <td>
         <a href="{% url 'equipment:delete_schedule' schedule.pk %}">
-          <button type="button" class="btn btn-danger">予約取消</button>
+          <button type="button" class="btn btn-danger btn-xs" style="font-size: 10px;">予約取消</button>
         </a>
       </td>
     </tr>

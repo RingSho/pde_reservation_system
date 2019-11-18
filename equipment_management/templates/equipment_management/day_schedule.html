@@ -20,19 +20,19 @@
   <tbody>
     {% for schedule in schedules %}
     <tr>
-      <td>{{ schedule.band_id }}</td>
-      <td>{{ schedule.active_date }}</td>
+      <td class="band-name">{{ schedule.band_id }}</td>
+      <td class="date">{{ schedule.active_date }}</td>
       <td>{{ schedule.start_at }}</td>
       <td>{{ schedule.end_at }}</a></td>
       <td>{{ schedule.text }}</td>
       <td>
         <a href="{% url 'equipment:update_schedule' schedule.pk %}">
-          <button type="button" class="btn btn-success">予約変更</button>
+          <button type="button" class="btn btn-success btn-xs" style="font-size: 10px;">予約変更</button>
         </a>
       </td>
       <td>
         <a href="{% url 'equipment:delete_schedule' schedule.pk %}">
-          <button type="button" class="btn btn-danger">予約取消</button>
+          <button type="button" class="btn btn-danger btn-xs" style="font-size: 10px;">予約取消</button>
         </a>
       </td>
     </tr>
