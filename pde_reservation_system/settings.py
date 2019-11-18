@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'user_sessions',
+    'accounts.apps.AccountsConfig',
     'graphene_django',
 ]
 
@@ -49,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'user_sessions.middleware.SessionMiddleware',
 ]
 
 ROOT_URLCONF = 'pde_reservation_system.urls'
@@ -124,3 +127,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+LOGIN_URL='accounts:login'
+LOGIN_REDIRECT_URL='equipment:month'
+LOGOUT_REDIRECT_URL='accounts:login'
+
+SESSION_ENGINE = 'user_sessions.backends.db'

@@ -4,8 +4,11 @@ from .forms import BandCreateForm, ScheduleCreateForm
 from . import mixins
 from django.views import generic
 import datetime
+from django.contrib.auth.decorators import login_required, permission_required
+from django.utils.decorators import method_decorator
 
 
+@login_required
 def add_band(request):
   form = BandCreateForm(request.POST or None)
   if request.method == 'POST' and form.is_valid():
@@ -19,6 +22,7 @@ def add_band(request):
     context['error_message'] = "※ 既に登録されたバンド名が入力されています。"
   return render(request, 'equipment_management/band_form.html', context)
 
+@login_required
 def add_schedule(request):
   form = ScheduleCreateForm(request.POST or None)
   if request.method == 'POST' and form.is_valid():
@@ -30,14 +34,14 @@ def add_schedule(request):
   }
   return render(request, 'equipment_management/band_form.html', context)
 
-
+@login_required
 def show_band_list(request):
   context ={
       'bands' : Band.objects.all(),
   }
   return render(request, 'equipment_management/band_list.html', context)
 
-
+@login_required
 def update_schedule(request, pk):
   schedule = get_object_or_404(Schedule, pk=pk)
 
@@ -51,7 +55,7 @@ def update_schedule(request, pk):
   }
   return render(request, 'equipment_management/band_form.html', context)
 
-
+@login_required
 def delete_schedule(request, pk):
     schedule = get_object_or_404(Schedule, pk=pk)
     if request.method == 'POST':
@@ -63,6 +67,7 @@ def delete_schedule(request, pk):
     }
     return render(request, 'equipment_management/schedule_confirm_delete.html', context)
 
+@login_required
 def delete_band(request, pk):
     band = get_object_or_404(Band, pk=pk)
     if request.method == 'POST':
@@ -74,6 +79,7 @@ def delete_band(request, pk):
     }
     return render(request, 'equipment_management/band_confirm_delete.html', context)
 
+@login_required
 def schedule_by_band(request, pk):
   band_name = Band.objects.get(pk=pk)
 
@@ -83,6 +89,7 @@ def schedule_by_band(request, pk):
   }
   return render(request, 'equipment_management/schedule_by_band.html', context)
 
+@login_required
 def day_schedule(request, year, month, day):
   target_date = datetime.date(year, month, day)
   context ={
@@ -91,10 +98,10 @@ def day_schedule(request, year, month, day):
   }
   return render(request, 'equipment_management/day_schedule.html', context)
 
+@method_decorator(login_required, name='dispatch')
 class MonthCalendar(mixins.MonthCalendarMixin, generic.TemplateView):
     """月間カレンダーを表示するビュー"""
     template_name = 'equipment_management/month.html'
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         calendar_context = self.get_month_calendar()

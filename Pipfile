@@ -11,6 +11,7 @@ graphene-django = "*"
 django-bootstrap-datepicker-plus = "*"
 spyder = "*"
 pillow = "*"
+django-user-sessions = "*"
 
 [requires]
 python_version = "3.7"

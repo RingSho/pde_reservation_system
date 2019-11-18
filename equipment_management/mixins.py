@@ -3,13 +3,15 @@ from collections import deque
 import datetime
 import itertools
 from django import forms
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 
 class BaseCalendarMixin:
     """カレンダー関連Mixinの、基底クラス"""
     first_weekday = 0  # 0は月曜から、1は火曜から。6なら日曜日からになります。お望みなら、継承したビューで指定してください。
     week_names = ['月', '火', '水', '木', '金', '土', '日']  # これは、月曜日から書くことを想定します。['Mon', 'Tue'...
-
+    
     def setup_calendar(self):
         """内部カレンダーの設定処理
 
@@ -28,7 +30,6 @@ class BaseCalendarMixin:
 
 class MonthCalendarMixin(BaseCalendarMixin):
     """月間カレンダーの機能を提供するMixin"""
-
     def get_previous_month(self, date):
         """前月を返す"""
         if date.month == 1:
