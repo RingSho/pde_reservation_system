@@ -25,9 +25,9 @@ class Band(models.Model):
 class Schedule(models.Model):
   band_id = models.ForeignKey(Band, on_delete=models.CASCADE)
   pa_name = models.CharField(max_length=255, verbose_name='PA担当者名')
-  active_date = models.DateField(default=timezone.now)
-  start_at = models.TimeField(default= nine_hours_hence())
-  end_at = models.TimeField(default=two_hours_hence)
+  active_date = models.DateField(default=timezone.now, verbose_name='予約日')
+  start_at = models.TimeField(default= nine_hours_hence(), verbose_name='開始時間')
+  end_at = models.TimeField(default=two_hours_hence, verbose_name='終了時間')
   text = models.TextField(blank=True, verbose_name='備考欄')
   created_at = models.DateTimeField(auto_now=True)
   updated_at = models.DateTimeField(auto_now=True)

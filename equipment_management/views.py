@@ -32,6 +32,9 @@ def add_schedule(request):
     'form' : ScheduleCreateForm(),
     'title' : '機材予約',
   }
+  if not form.is_valid():
+    for error in form.errors.values():
+      context['error_message'] = error
   return render(request, 'equipment_management/band_form.html', context)
 
 @login_required
@@ -57,27 +60,27 @@ def update_schedule(request, pk):
 
 @login_required
 def delete_schedule(request, pk):
-    schedule = get_object_or_404(Schedule, pk=pk)
-    if request.method == 'POST':
-        schedule.delete()
-        return redirect('equipment:month')
+  schedule = get_object_or_404(Schedule, pk=pk)
+  if request.method == 'POST':
+    schedule.delete()
+    return redirect('equipment:month')
 
-    context = {
-        'schedule': schedule,
-    }
-    return render(request, 'equipment_management/schedule_confirm_delete.html', context)
+  context = {
+    'schedule': schedule,
+  }
+  return render(request, 'equipment_management/schedule_confirm_delete.html', context)
 
 @login_required
 def delete_band(request, pk):
-    band = get_object_or_404(Band, pk=pk)
-    if request.method == 'POST':
-        band.delete()
-        return redirect('equipment:show_band_list')
+  band = get_object_or_404(Band, pk=pk)
+  if request.method == 'POST':
+      band.delete()
+      return redirect('equipment:show_band_list')
 
-    context = {
-        'band': band,
-    }
-    return render(request, 'equipment_management/band_confirm_delete.html', context)
+  context = {
+      'band': band,
+  }
+  return render(request, 'equipment_management/band_confirm_delete.html', context)
 
 @login_required
 def schedule_by_band(request, pk):

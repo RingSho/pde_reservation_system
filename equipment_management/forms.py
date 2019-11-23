@@ -20,3 +20,14 @@ class ScheduleCreateForm(forms.ModelForm):
     widgets = {
         'active_date': DateInput(),
     }
+
+  def clean_end_at(self):
+    start_at = self.cleaned_data['start_at']
+    end_at = self.cleaned_data['end_at']
+    if end_at <= start_at:
+      raise forms.ValidationError(
+        '終了時間は、開始時間よりも後にしてください'
+        )
+    return end_at
+
+  
