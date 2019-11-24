@@ -22,15 +22,7 @@ STATIC_URL = '/static/'
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'equipment_management/static'),
-)
-
-STATIC_URL = '/static/'
-
-# Additional locations of static files
-ROOT_PATH = os.path.dirname(__file__)
-STATICFILES_DIRS = (
-    [os.path.join(ROOT_PATH, 'static')]
+    os.path.join(BASE_DIR, '.', 'static'),
 )
 
 
