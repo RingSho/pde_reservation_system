@@ -32,9 +32,8 @@ def add_schedule(request):
     'form' : ScheduleCreateForm(),
     'title' : '機材予約',
   }
-  if not form.is_valid():
-    for error in form.errors.values():
-      context['error_message'] = error
+  if request.method == 'POST' and not form.is_valid():
+    context['error_message'] = "※ 既にその時間には予約が入っているか、時間の入力に誤りがあります"
   return render(request, 'equipment_management/band_form.html', context)
 
 @login_required
@@ -54,7 +53,8 @@ def update_schedule(request, pk):
     return redirect('equipment:month')
 
   context = {
-      'form': form,
+      'form' : form,
+      'title' : '予約の変更',
   }
   return render(request, 'equipment_management/band_form.html', context)
 
@@ -96,7 +96,7 @@ def schedule_by_band(request, pk):
 def day_schedule(request, year, month, day):
   target_date = datetime.date(year, month, day)
   context ={
-      'schedules' : Schedule.objects.filter(active_date=target_date).order_by('-active_date'),
+      'schedules' : Schedule.objects.filter(active_date=target_date).order_by('start_at'),
       'target_date' : target_date,
   }
   return render(request, 'equipment_management/day_schedule.html', context)

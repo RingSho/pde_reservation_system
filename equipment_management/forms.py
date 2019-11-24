@@ -26,8 +26,7 @@ class ScheduleCreateForm(forms.ModelForm):
     start_at = self.cleaned_data['start_at']
     end_at = self.cleaned_data['end_at']
     active_date = self.cleaned_data['active_date']
-    schedules = Schedule.objects.filter(active_date=active_date)
-
+    schedules = Schedule.objects.filter(active_date=active_date).exclude(id=self.instance.id)
     for schedule in schedules:
       if not ((start_at >= schedule.end_at) or (end_at <= schedule.start_at)):
         raise forms.ValidationError(
