@@ -110,6 +110,6 @@ class MonthCalendar(mixins.MonthCalendarMixin, generic.TemplateView):
         calendar_context = self.get_month_calendar()
         context.update(calendar_context)
         today_date = datetime.date.today()
-        context['schedules'] = Schedule.objects.filter(active_date=today_date).order_by('-active_date')
+        context['schedules'] = Schedule.objects.filter(active_date=today_date).order_by('start_at')
         context['today'] = today_date
         return context
