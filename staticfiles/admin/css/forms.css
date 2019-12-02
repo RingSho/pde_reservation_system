@@ -388,7 +388,7 @@ body.popup .submit-row {
     position: relative;
 }
 
-.inline-related h4 {
+.inline-related h3 {
     margin: 0;
     color: #666;
     padding: 5px;
@@ -398,11 +398,11 @@ body.popup .submit-row {
     border-bottom: 1px solid #eee;
 }
 
-.inline-related h4 span.delete {
+.inline-related h3 span.delete {
     float: right;
 }
 
-.inline-related h4 span.delete label {
+.inline-related h3 span.delete label {
     margin-left: 2px;
     font-size: 11px;
 }
@@ -414,7 +414,7 @@ body.popup .submit-row {
     width: 100%;
 }
 
-.inline-related fieldset.module h4 {
+.inline-related fieldset.module h3 {
     margin: 0;
     padding: 2px 5px 3px 5px;
     font-size: 11px;

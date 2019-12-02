@@ -85,8 +85,7 @@ def delete_band(request, pk):
 @login_required
 def schedule_by_band(request, pk):
   band_name = Band.objects.get(pk=pk)
-
-  context ={
+  context = {
       'band_name' : band_name,
       'schedules' : Schedule.objects.filter(band_id=band_name).order_by('-active_date'),
   }

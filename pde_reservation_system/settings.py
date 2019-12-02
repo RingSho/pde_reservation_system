@@ -34,7 +34,7 @@ SECRET_KEY = 'cgb#5formg-7wpcn#$em(x==o9*&%n$rt8d0&c21u&an(lt_o1'
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 

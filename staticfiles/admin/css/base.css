@@ -52,7 +52,7 @@ p {
     line-height: 140%;
 }
 
-h1,h2,h4,h4,h5 {
+h1,h2,h3,h4,h5 {
     font-weight: bold;
 }
 
@@ -73,7 +73,7 @@ h2.subhead {
     margin-top: 0;
 }
 
-h4 {
+h3 {
     font-size: 14px;
     margin: .8em 0 .3em 0;
     color: #666;
@@ -200,7 +200,7 @@ div.help ul {
     cursor: help;
 }
 
-p img, h1 img, h2 img, h4 img, h4 img, td img {
+p img, h1 img, h2 img, h3 img, h4 img, td img {
     vertical-align: middle;
 }
 
@@ -499,7 +499,7 @@ input[type=button][disabled].default {
     background: #fff;
 }
 
-.module p, .module ul, .module h4, .module h4, .module dl, .module pre {
+.module p, .module ul, .module h3, .module h4, .module dl, .module pre {
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -512,7 +512,7 @@ input[type=button][disabled].default {
     margin-left: 1.5em;
 }
 
-.module h4 {
+.module h3 {
     margin-top: .6em;
 }
 
@@ -906,7 +906,7 @@ table#change-history tbody th {
     background: none;
 }
 
-#content-related h4 {
+#content-related h3 {
     font-size: 14px;
     color: #666;
     padding: 0 16px;

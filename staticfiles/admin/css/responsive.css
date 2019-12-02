@@ -750,7 +750,7 @@ input[type="submit"], button {
         border-bottom: none;
     }
 
-    .inline-group[data-inline-type="stacked"] .inline-related h4 {
+    .inline-group[data-inline-type="stacked"] .inline-related h3 {
         padding: 10px;
         border-top-width: 0;
         border-bottom-width: 2px;
@@ -759,11 +759,11 @@ input[type="submit"], button {
         align-items: center;
     }
 
-    .inline-group[data-inline-type="stacked"] .inline-related h4 .inline_label {
+    .inline-group[data-inline-type="stacked"] .inline-related h3 .inline_label {
         margin-right: auto;
     }
 
-    .inline-group[data-inline-type="stacked"] .inline-related h4 span.delete {
+    .inline-group[data-inline-type="stacked"] .inline-related h3 span.delete {
         float: none;
         flex: 1 1 100%;
         margin-top: 5px;

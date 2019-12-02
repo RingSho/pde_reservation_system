@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+import datetime
 
 
 def nine_hours_hence():
@@ -33,4 +34,14 @@ class Schedule(models.Model):
   updated_at = models.DateTimeField(auto_now=True)
 
   def __str__(self):
-      return self.band_id.band_name + ': ' +  str(self.active_date) + ' ' + str(self.start_at) + ' - ' + str(self.end_at)
+    return self.band_id.band_name + ': ' +  str(self.active_date) + ' ' + str(self.start_at) + ' - ' + str(self.end_at)
+
+  def is_avaiable(self):
+    today = datetime.date.today()
+    current_time = datetime.datetime.now().time()
+    if today < self.active_date:
+      return True
+    elif (today == self.active_date) and (current_time < self.start_at):
+      return True
+    else:
+      return False
