@@ -61,12 +61,14 @@
         <p class="card-text text-break">{{ schedule.text }}</p>
       </div>
       <br>
+      {% if schedule.is_avaiable %}
       <a href="{% url 'equipment:update_schedule' schedule.pk %}">
           <button type="button" class="btn btn-success btn-xs" style="font-size: 10px;">予約変更</button>
       </a>
       <a href="{% url 'equipment:delete_schedule' schedule.pk %}">
         <button type="button" class="btn btn-danger btn-xs" style="font-size: 10px;">予約取消</button>
       </a>
+      {% endif %}
     </div>
   </div>
 {% endfor %}
